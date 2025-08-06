@@ -18,8 +18,9 @@ class UserOut(BaseModel):
     id: int
     created_at: datetime
 
-    class Config:
-        model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True
+    )  # directly here, NOT inside a Config class
 
 
 class Post(PostBase):
@@ -28,8 +29,14 @@ class Post(PostBase):
     owner_id: int
     owner: UserOut
 
-    class Config:
-        model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
+
+
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
+
+    model_config = ConfigDict(from_attributes=True)  # directly here too
 
 
 class UserCreate(BaseModel):
