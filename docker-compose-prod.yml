@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  api:
+    image: ishanshah07/social-media-backend
+    ports:
+      - "80:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./:/usr/src/app:ro
+    working_dir: /usr/src/app
